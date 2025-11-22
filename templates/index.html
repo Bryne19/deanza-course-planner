@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Anza Course Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 De Anza College Course Scheduler</h1>
+            <p>Search for courses, view professor ratings, and build your schedule</p>
+        </header>
+
+        <nav class="tabs">
+            <a href="/" class="tab active">Search Courses</a>
+            <a href="/schedule" class="tab">My Schedule</a>
+        </nav>
+
+        <!-- My Planned Classes Section (under tabs) -->
+        <div class="planned-classes-section">
+            <h3>My Planned Classes</h3>
+            
+            <form id="plannedClassForm" class="planned-class-form">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="planned_class_name">Class Name</label>
+                        <input type="text" id="planned_class_name" name="class_name" required 
+                               placeholder="MATH 1A" style="text-transform: uppercase;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="planned_class_notes">Notes</label>
+                        <input type="text" id="planned_class_notes" name="notes" 
+                               placeholder="Optional notes...">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+
+            <div id="plannedClassesList" class="planned-classes-list">
+                <p class="loading-text">Loading...</p>
+            </div>
+        </div>
+
+        <div class="main-content-grid">
+            <!-- Left Side: Search Courses -->
+            <div class="left-panel">
+                <div class="search-section">
+                    <h3>Search Courses</h3>
+                    <form id="searchForm" class="search-form">
+                        <div class="form-group">
+                            <label for="department">Department (e.g., MATH, PHYS, CIS, etc.)</label>
+                            <input type="text" id="department" name="department" maxlength="5" required 
+                                   placeholder="MATH" style="text-transform: uppercase;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="course_code">Course Code (e.g., 1A, 1B, etc.)</label>
+                            <input type="text" id="course_code" name="course_code" maxlength="5" required 
+                                   placeholder="1A" style="text-transform: uppercase;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="term">Term (e.g., W2026, S2026, F2026, SU2026)</label>
+                            <input type="text" id="term" name="term" maxlength="6" minlength="5" required 
+                                   placeholder="W2026" style="text-transform: uppercase;">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Searching...</p>
+                </div>
+
+                <div id="results" class="results hidden">
+                    <h3 id="resultsTitle"></h3>
+                    <div id="coursesList" class="courses-list"></div>
+                </div>
+
+                <div id="error" class="error hidden"></div>
+            </div>
+
+            <!-- Right Side: Selected Courses from Schedule -->
+            <div class="right-panel">
+                <div class="selected-courses-section">
+                    <h3>Selected Courses</h3>
+                    <div id="selectedCoursesList" class="selected-courses-list">
+                        <p class="loading-text">Loading courses...</p>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Professor Ratings & Difficulty</h3>
+                    <canvas id="professorChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
