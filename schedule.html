@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Schedule - De Anza Course Scheduler</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/schedule.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📅 My Schedule</h1>
+            <p>View your weekly schedule and check for conflicts</p>
+        </header>
+
+        <nav class="tabs">
+            <a href="/" class="tab">Search Courses</a>
+            <a href="/schedule" class="tab active">My Schedule</a>
+        </nav>
+
+        <div class="schedule-controls">
+            <button id="clearSchedule" class="btn btn-danger">Clear All Courses</button>
+            <span id="courseCount" class="course-count">0 courses</span>
+        </div>
+
+        <div id="conflicts" class="conflicts-section hidden">
+            <h3>⚠️ Schedule Conflicts Detected</h3>
+            <div id="conflictsList"></div>
+        </div>
+
+        <div id="scheduleContainer" class="schedule-container">
+            <div id="scheduleGrid" class="schedule-grid">
+                <!-- Schedule will be rendered here by JavaScript -->
+            </div>
+        </div>
+
+        <div id="selectedCourses" class="selected-courses">
+            <h3>Selected Courses</h3>
+            <div id="coursesList" class="courses-list"></div>
+        </div>
+
+        <div id="emptySchedule" class="empty-schedule">
+            <p>No courses added yet. <a href="/">Search for courses</a> to add them to your schedule.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/schedule.js') }}"></script>
+</body>
+</html>
+

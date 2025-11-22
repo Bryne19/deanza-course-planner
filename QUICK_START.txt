@@ -1,0 +1,51 @@
+═══════════════════════════════════════════════════════════════
+  De Anza Course Scheduler - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Open Terminal
+──────────────────────
+  Open Terminal app on your Mac
+
+STEP 2: Navigate to the web_app folder
+───────────────────────────────────────
+  Type this command and press Enter:
+  
+    cd /Users/student/Downloads/Project/web_app
+
+STEP 3: Start the application
+──────────────────────────────
+  Type this command and press Enter:
+  
+    python3 run.py
+
+STEP 4: Open in your browser
+─────────────────────────────
+  You should see a message like:
+    "🚀 Starting Flask app on http://localhost:5001"
+  
+  Open your web browser (Chrome, Safari, Firefox) and go to:
+  
+    http://localhost:5001
+
+═══════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+────────────────
+
+If you see "Port already in use":
+  → The app will automatically use a different port
+  → Use the URL shown in the terminal (might be 5002, 5003, etc.)
+
+If you see "Module not found":
+  → Install Flask: pip3 install flask
+
+If the browser shows "Can't connect":
+  → Make sure the app is still running in the terminal
+  → Check that you're using the exact URL from the terminal
+  → Try: http://127.0.0.1:5001 instead
+
+To stop the app:
+  → Press Ctrl+C in the terminal where it's running
+
+═══════════════════════════════════════════════════════════════
+
